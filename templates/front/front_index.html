@@ -1,0 +1,98 @@
+{% extends "front/front_base.html" %}
+{% from "common/_macros.html" import static %}
+
+{% block title %}学习论坛{% endblock %}
+
+
+
+{% block head %}
+    <link rel="stylesheet" href="{{ static("front/css/front_index.css") }}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="lg-container">
+        <div id="carousel-example-generic" class="carousel slide index-banner" data-ride="carousel">
+            <!-- Indicators,指示器 -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+
+             </ol>
+
+            <!-- Wrapper for slides轮播图 -->
+            <div class="carousel-inner" role="listbox">
+                {% for banner in banners %}
+                    {% if loop.first %}
+                        <div class="item active">
+                    {% else %}
+                        <div class="item">
+                    {% endif %}
+                <a href="{{ banner.link_url }}">
+                    <img src="{{ banner.image_url }}" alt="...">
+                </a>
+                </div>
+                {% endfor %}
+
+                {#    <div class="item active">#}
+                {#        <a href="#">#}
+                {#                  <img src="https://static-image.xfz.cn/1576747067_955.png" alt="...">#}
+                {##}
+                {#        </a>#}
+                {#    </div>#}
+                {#    <div class="item">#}
+                {#         <a href="#">#}
+                {#                  <img src="https://static-image.xfz.cn/1577338858_564.jpeg" alt="...">#}
+                {##}
+                {#        </a>#}
+                {#      <div class="carousel-caption">#}
+                {#        ...#}
+                {#      </div>#}
+                {#    </div>#}
+                {#         <div class="item active">#}
+                {#        <a href="#">#}
+                {#                  <img src="https://img.alicdn.com/simba/img/TB14mh6qpP7gK0jSZFjSuw5aXXa.jpg" alt="...">#}
+                {##}
+                {#        </a>#}
+                {#    </div>#}
+                {#         <div class="item active">#}
+                {#        <a href="#">#}
+                {#                  <img src="https://img.alicdn.com/tps/i4/TB1u42drUT1gK0jSZFhSuuAtVXa.jpg_q90_.webp" alt="...">#}
+                {##}
+                {#        </a>#}
+                {#    </div>#}
+
+                </div>
+          <!-- Controls 左右切换的按钮-->
+
+               <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+
+        </div>
+    <div class="sm-container">
+            <div style="padding-bottom:10px;">
+                <a href="{{ url_for("front.apost") }}"   class="btn btn-warning btn-block">发布帖子</a>
+            </div>
+            <div class="list-group">
+                <a href="#" class="list-group-item active">所有板块</a>
+                {% for board in boards %}
+                    <a href="#" class="list-group-item">{{ board.name }}</a>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

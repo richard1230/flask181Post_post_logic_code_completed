@@ -1,0 +1,24 @@
+.main-container {
+
+    width: 990px;
+    margin: 0 auto;
+    /*//版心居中*/
+    overflow: hidden;
+}
+
+
+/*大的版心*/
+.lg-container {
+    /*margin-top: 30px;*/
+
+    width: 730px;
+    float: left;
+}
+
+
+/*小的版心*/
+.sm-container {
+    /*margin-top: 30px;*/
+    width: 250px;
+    float: right;
+}
